@@ -1,4 +1,4 @@
-RTL-JQuery-UI
-=============
+Right To Left jQuery UI Style
+-----------------------------
 
-Right to Left Jquery UI CSS
+This is a way to convert the jquery ui component direction from ltr to rtl
