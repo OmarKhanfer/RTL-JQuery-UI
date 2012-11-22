@@ -8,6 +8,10 @@ Its in css file to change the directions from LTR to RTL for jQuery UI Component
 
 <h3>2- Steps To Do it</h3>
 ----------------------------
-So to do it import jquery-no-theme-rtl after your jquery-ui-theme css
+So to do it import jquery-no-theme-rtl.css after your jquery-ui-theme css
+
+<h3>3- RTL jQuery UI SASS</h3>
+----------------------------
+Also you can find RTL jQuery UI file in SASS folder.
 
 <a href='http://omarkhanfer.github.com/RTL-JQuery-UI/' target='_blank'>View Demo</a>
