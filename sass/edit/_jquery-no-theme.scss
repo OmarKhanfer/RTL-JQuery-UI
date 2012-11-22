@@ -1,0 +1,300 @@
+// ------------------------------------------
+// author: 	Omar Najeeb Khanfer.
+// email: 	omar.aljaber@gmail.com.
+// jQuery 2-Directions Stlye Virsion 1.0.
+// ------------------------------------------
+
+
+// importing resources 
+// ------------------------------------------
+@import "../commons/mixin";
+
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-zfix {@include left(0);}
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { @include left(0);}
+.ui-resizable-n {@include left(0);}
+.ui-resizable-s {@include left(0);}
+.ui-resizable-e {@include right(-5px);}
+.ui-resizable-w {@include left(-5px);}
+.ui-resizable-se {@include right(1px);}
+.ui-resizable-sw {@include left(-5px);}
+.ui-resizable-nw {@include left(-5px);}
+.ui-resizable-ne {@include right(-5px);}
+.ui-accordion .ui-accordion-header {@include text-align(left);@include padding(.5em,.5em,.5em,.7em);}
+.ui-accordion .ui-accordion-icons { @include padding-left(2.2em); }
+.ui-accordion .ui-accordion-noicons { @include padding-left(.7em); }
+.ui-accordion .ui-accordion-icons .ui-accordion-icons { @include padding-left(2.2em); }
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {@include left(.5em);@include right(auto);}
+
+/* workarounds */
+.ui-button {@include margin-right(.1em);} /* the overflow property removes extra width in IE */
+.ui-button-icon-only { width: 2.2em; } /* to make room for the icon, a width needs to be set here */
+button.ui-button-icon-only { width: 2.4em; } /* button elements seem to need a little more width */
+.ui-button-icons-only { width: 3.4em; } 
+button.ui-button-icons-only { width: 3.7em; } 
+
+/*button text element */
+.ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text { @include padding(.4em,1em,.4em,2.1em); }
+.ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text { @include padding(.4em,2.1em,.4em,1em); }
+.ui-button-text-icons .ui-button-text { @include padding-left(2.1em); @include padding-right(2.1em); }
+/* no icon support for input elements, provide padding by default */
+
+/*button icon element(s) */
+.ui-button-icon-only .ui-icon { @include left(50%); @include margin-left(-8px); }
+.ui-button-text-icon-primary .ui-button-icon-primary, .ui-button-text-icons .ui-button-icon-primary, .ui-button-icons-only .ui-button-icon-primary { @include left(.5em); }
+.ui-button-text-icon-secondary .ui-button-icon-secondary, .ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { @include right(.5em); }
+.ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { @include right(.5em); }
+
+/*button sets*/
+.ui-buttonset { @include margin-right(7px); }
+.ui-buttonset .ui-button { @include margin-left(0); @include margin-right(-.3em); }
+
+/* workarounds */
+.ui-datepicker .ui-datepicker-prev {left:2px; }
+.ui-datepicker .ui-datepicker-next {right:2px; }
+.ui-datepicker .ui-datepicker-prev-hover {left:1px; }
+.ui-datepicker .ui-datepicker-next-hover {right:1px; }
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {left:50%; margin-left:-8px;}
+.ui-datepicker td span, .ui-datepicker td a {text-align:right;}
+.ui-datepicker .ui-datepicker-buttonpane {border-left:0;border-right:0;}
+.ui-datepicker .ui-datepicker-buttonpane button {float:right;padding:.2em .6em .3em .6em;}
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {float:left; }
+
+/* with multiple calendars */
+.ui-datepicker-multi .ui-datepicker-group {float:left; }
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header {border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-buttonpane {clear:left; }
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.ui-datepicker-cover {
+    @include left(-4px); /*must have*/
+}
+.ui-dialog .ui-dialog-title {@include float(left); @include margin(.1em,16px,.1em,0); }
+.ui-dialog .ui-dialog-titlebar-close {@include right(.3em);@include left(inherit)}
+.ui-dialog .ui-dialog-buttonpane {@include text-align(left);@include padding(.3em,1em,.5em,.4em); }
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {@include float(right); }
+.ui-dialog .ui-dialog-buttonpane button { @include margin(.5em,.4em,.5em,0); }
+.ui-dialog .ui-resizable-se { @include right(3px);}
+
+
+/* icon support */
+.ui-menu-icons .ui-menu-item a { @include padding-left(2em); }
+
+/* left-aligned */
+.ui-menu .ui-icon { @include left(.2em); }
+
+/* right-aligned */
+.ui-menu .ui-menu-icon { @include float(right); }
+.ui-progressbar { @include text-align(left); }
+.ui-slider {@include text-align(left); }
+
+.ui-slider-horizontal .ui-slider-handle { @include margin-left(-.6em); }
+.ui-slider-horizontal .ui-slider-range-min { @include left(0); }
+.ui-slider-horizontal .ui-slider-range-max { @include right(0); }
+
+.ui-slider-vertical .ui-slider-handle { @include left(-.3em); @include margin-left(0); }
+.ui-slider-vertical .ui-slider-range { @include left(0); }
+.ui-spinner-input { @include margin-left(.4em); @include margin-right(22px); }
+.ui-spinner-button { @include right(0); }
+.ui-spinner a.ui-spinner-button { @include border-right(none); } /* more specificity required here to overide default borders */
+.ui-spinner .ui-icon { @include left(0); } /* vertical centre icon */
+
+
+.ui-tabs .ui-tabs-nav li { @include float(left); @include margin(1px,.2em,0,0); }
+.ui-tabs .ui-tabs-nav li a { @include float(left); }
+
+
+
+/* Corner radius */
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl { @include border-top-left-radius(4px);}
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr { @include border-top-right-radius(4px);}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl { @include border-bottom-left-radius(4px);}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br { @include border-bottom-right-radius(4px); }
+
+
+
+/* positioning */
+.ui-icon-carat-1-n { background-position: 0 0; }
+.ui-icon-carat-1-nw { background-position: -16px 0; }
+.ui-icon-carat-1-w { background-position: -32px 0; }
+.ui-icon-carat-1-sw { background-position: -48px 0; }
+.ui-icon-carat-1-s { background-position: -64px 0; }
+.ui-icon-carat-1-se { background-position: -80px 0; }
+.ui-icon-carat-1-e { background-position: -96px 0; }
+.ui-icon-carat-1-ne { background-position: -112px 0; }
+.ui-icon-carat-2-n-s { background-position: -128px 0; }
+.ui-icon-carat-2-e-w { background-position: -144px 0; }
+.ui-icon-triangle-1-n { background-position: 0 -16px; }
+.ui-icon-triangle-1-nw { background-position: -16px -16px; }
+.ui-icon-triangle-1-w { background-position: -32px -16px; }
+.ui-icon-triangle-1-sw { background-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-position: -64px -16px; }
+.ui-icon-triangle-1-se { background-position: -80px -16px; }
+.ui-icon-triangle-1-e { background-position: -96px -16px; }
+.ui-icon-triangle-1-ne { background-position: -112px -16px; }
+.ui-icon-triangle-2-n-s { background-position: -128px -16px; }
+.ui-icon-triangle-2-e-w { background-position: -144px -16px; }
+.ui-icon-arrow-1-n { background-position: 0 -32px; }
+.ui-icon-arrow-1-nw { background-position: -16px -32px; }
+.ui-icon-arrow-1-w { background-position: -32px -32px; }
+.ui-icon-arrow-1-sw { background-position: -48px -32px; }
+.ui-icon-arrow-1-s { background-position: -64px -32px; }
+.ui-icon-arrow-1-se { background-position: -80px -32px; }
+.ui-icon-arrow-1-e { background-position: -96px -32px; }
+.ui-icon-arrow-1-ne { background-position: -112px -32px; }
+.ui-icon-arrow-2-n-s { background-position: -128px -32px; }
+.ui-icon-arrow-2-nw-se { background-position: -144px -32px; }
+.ui-icon-arrow-2-e-w { background-position: -160px -32px; }
+.ui-icon-arrow-2-sw-ne { background-position: -176px -32px; }
+.ui-icon-arrowstop-1-n { background-position: -192px -32px; }
+.ui-icon-arrowstop-1-w { background-position: -208px -32px; }
+.ui-icon-arrowstop-1-s { background-position: -224px -32px; }
+.ui-icon-arrowstop-1-e { background-position: -240px -32px; }
+.ui-icon-arrowthick-1-n { background-position: 0 -48px; }
+.ui-icon-arrowthick-1-nw { background-position: -16px -48px; }
+.ui-icon-arrowthick-1-w { background-position: -32px -48px; }
+.ui-icon-arrowthick-1-sw { background-position: -48px -48px; }
+.ui-icon-arrowthick-1-s { background-position: -64px -48px; }
+.ui-icon-arrowthick-1-se { background-position: -80px -48px; }
+.ui-icon-arrowthick-1-e { background-position: -96px -48px; }
+.ui-icon-arrowthick-1-ne { background-position: -112px -48px; }
+.ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
+.ui-icon-arrowthick-2-nw-se { background-position: -144px -48px; }
+.ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
+.ui-icon-arrowthick-2-sw-ne { background-position: -176px -48px; }
+.ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
+.ui-icon-arrowthickstop-1-w { background-position: -208px -48px; }
+.ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
+.ui-icon-arrowthickstop-1-e { background-position: -240px -48px; }
+.ui-icon-arrowreturnthick-1-e { background-position: 0 -64px; }
+.ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
+.ui-icon-arrowreturnthick-1-w { background-position: -32px -64px; }
+.ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
+.ui-icon-arrowreturn-1-e { background-position: -64px -64px; }
+.ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
+.ui-icon-arrowreturn-1-w { background-position: -96px -64px; }
+.ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
+.ui-icon-arrowrefresh-1-e { background-position: -128px -64px; }
+.ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
+.ui-icon-arrowrefresh-1-w { background-position: -160px -64px; }
+.ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
+.ui-icon-arrow-4 { background-position: 0 -80px; }
+.ui-icon-arrow-4-diag { background-position: -16px -80px; }
+.ui-icon-extlink { background-position: -32px -80px; }
+.ui-icon-newwin { background-position: -48px -80px; }
+.ui-icon-refresh { background-position: -64px -80px; }
+.ui-icon-shuffle { background-position: -80px -80px; }
+.ui-icon-transfer-e-w { background-position: -96px -80px; }
+.ui-icon-transferthick-e-w { background-position: -112px -80px; }
+.ui-icon-folder-collapsed { background-position: 0 -96px; }
+.ui-icon-folder-open { background-position: -16px -96px; }
+.ui-icon-document { background-position: -32px -96px; }
+.ui-icon-document-b { background-position: -48px -96px; }
+.ui-icon-note { background-position: -64px -96px; }
+.ui-icon-mail-closed { background-position: -80px -96px; }
+.ui-icon-mail-open { background-position: -96px -96px; }
+.ui-icon-suitcase { background-position: -112px -96px; }
+.ui-icon-comment { background-position: -128px -96px; }
+.ui-icon-person { background-position: -144px -96px; }
+.ui-icon-print { background-position: -160px -96px; }
+.ui-icon-trash { background-position: -176px -96px; }
+.ui-icon-locked { background-position: -192px -96px; }
+.ui-icon-unlocked { background-position: -208px -96px; }
+.ui-icon-bookmark { background-position: -224px -96px; }
+.ui-icon-tag { background-position: -240px -96px; }
+.ui-icon-home { background-position: 0 -112px; }
+.ui-icon-flag { background-position: -16px -112px; }
+.ui-icon-calendar { background-position: -32px -112px; }
+.ui-icon-cart { background-position: -48px -112px; }
+.ui-icon-pencil { background-position: -64px -112px; }
+.ui-icon-clock { background-position: -80px -112px; }
+.ui-icon-disk { background-position: -96px -112px; }
+.ui-icon-calculator { background-position: -112px -112px; }
+.ui-icon-zoomin { background-position: -128px -112px; }
+.ui-icon-zoomout { background-position: -144px -112px; }
+.ui-icon-search { background-position: -160px -112px; }
+.ui-icon-wrench { background-position: -176px -112px; }
+.ui-icon-gear { background-position: -192px -112px; }
+.ui-icon-heart { background-position: -208px -112px; }
+.ui-icon-star { background-position: -224px -112px; }
+.ui-icon-link { background-position: -240px -112px; }
+.ui-icon-cancel { background-position: 0 -128px; }
+.ui-icon-plus { background-position: -16px -128px; }
+.ui-icon-plusthick { background-position: -32px -128px; }
+.ui-icon-minus { background-position: -48px -128px; }
+.ui-icon-minusthick { background-position: -64px -128px; }
+.ui-icon-close { background-position: -80px -128px; }
+.ui-icon-closethick { background-position: -96px -128px; }
+.ui-icon-key { background-position: -112px -128px; }
+.ui-icon-lightbulb { background-position: -128px -128px; }
+.ui-icon-scissors { background-position: -144px -128px; }
+.ui-icon-clipboard { background-position: -160px -128px; }
+.ui-icon-copy { background-position: -176px -128px; }
+.ui-icon-contact { background-position: -192px -128px; }
+.ui-icon-image { background-position: -208px -128px; }
+.ui-icon-video { background-position: -224px -128px; }
+.ui-icon-script { background-position: -240px -128px; }
+.ui-icon-alert { background-position: 0 -144px; }
+.ui-icon-info { background-position: -16px -144px; }
+.ui-icon-notice { background-position: -32px -144px; }
+.ui-icon-help { background-position: -48px -144px; }
+.ui-icon-check { background-position: -64px -144px; }
+.ui-icon-bullet { background-position: -80px -144px; }
+.ui-icon-radio-on { background-position: -96px -144px; }
+.ui-icon-radio-off { background-position: -112px -144px; }
+.ui-icon-pin-w { background-position: -128px -144px; }
+.ui-icon-pin-s { background-position: -144px -144px; }
+.ui-icon-play { background-position: 0 -160px; }
+.ui-icon-pause { background-position: -16px -160px; }
+.ui-icon-seek-next { background-position: -32px -160px; }
+.ui-icon-seek-prev { background-position: -48px -160px; }
+.ui-icon-seek-end { background-position: -64px -160px; }
+.ui-icon-seek-start { background-position: -80px -160px; }
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+.ui-icon-seek-first { background-position: -80px -160px; }
+.ui-icon-stop { background-position: -96px -160px; }
+.ui-icon-eject { background-position: -112px -160px; }
+.ui-icon-volume-off { background-position: -128px -160px; }
+.ui-icon-volume-on { background-position: -144px -160px; }
+.ui-icon-power { background-position: 0 -176px; }
+.ui-icon-signal-diag { background-position: -16px -176px; }
+.ui-icon-signal { background-position: -32px -176px; }
+.ui-icon-battery-0 { background-position: -48px -176px; }
+.ui-icon-battery-1 { background-position: -64px -176px; }
+.ui-icon-battery-2 { background-position: -80px -176px; }
+.ui-icon-battery-3 { background-position: -96px -176px; }
+.ui-icon-circle-plus { background-position: 0 -192px; }
+.ui-icon-circle-minus { background-position: -16px -192px; }
+.ui-icon-circle-close { background-position: -32px -192px; }
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-position: -96px -192px; }
+.ui-icon-circle-arrow-e { background-position: -112px -192px; }
+.ui-icon-circle-arrow-s { background-position: -128px -192px; }
+.ui-icon-circle-arrow-w { background-position: -144px -192px; }
+.ui-icon-circle-arrow-n { background-position: -160px -192px; }
+.ui-icon-circle-zoomin { background-position: -176px -192px; }
+.ui-icon-circle-zoomout { background-position: -192px -192px; }
+.ui-icon-circle-check { background-position: -208px -192px; }
+.ui-icon-circlesmall-plus { background-position: 0 -208px; }
+.ui-icon-circlesmall-minus { background-position: -16px -208px; }
+.ui-icon-circlesmall-close { background-position: -32px -208px; }
+.ui-icon-squaresmall-plus { background-position: -48px -208px; }
+.ui-icon-squaresmall-minus { background-position: -64px -208px; }
+.ui-icon-squaresmall-close { background-position: -80px -208px; }
+.ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
+.ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
+.ui-icon-grip-solid-vertical { background-position: -32px -224px; }
+.ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
+.ui-icon-gripsmall-diagonal-se { background-position: -1164px -224px; }
+.ui-icon-grip-diagonal-se { background-position: -80px -11224px; }

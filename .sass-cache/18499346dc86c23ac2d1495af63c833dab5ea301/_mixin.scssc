@@ -1,0 +1,1057 @@
+3.2.3 (Media Mark)
+65f2b55b54e5bafc43b6f73b385133030b63447d
+o:Sass::Tree::RootNode
+:
+@linei:@template"+6// ------------------------------------------
+// author: 	Omar Najeeb Khanfer
+// email: 	omar.aljaber@gmail.com
+// ------------------------------------------
+
+// ------------------------------------------
+// ------------------------------------------
+// table of contents (recommended):
+// ------------------------------------------
+// * importing resources 
+// 	 no imports
+// * global variables
+//	 no variables
+// * global mixins
+//------------------------------------------ 
+//	1- clip:
+//		1.1	Rect
+//------------------------------------------ 
+//	2- margin:
+//		2.1	Margin
+//		2.2 Margin-Right
+//		2.3	Margin-Left
+//------------------------------------------ 
+//	3- Padding:
+//		3.1	Padding
+//		3.2 Padding-right
+//		3.3	Padding-left
+//------------------------------------------ 
+//	4- Floating:
+//		4.1 Float-right
+//		4.2 Float-left
+//		4.3 Float
+//------------------------------------------
+//	5- Aligment:
+//		5.1 Aligment-right
+//		5.2 Aligment-left
+//		5.3 Text-aligment
+//------------------------------------------
+//	6- Directions:
+//		6.1 Right
+//		6.2 Left
+//------------------------------------------
+//	7- Borders:
+//		7.1	  Borders General
+//		7.1.1 Border-Right
+//		7.1.2 Border-Left
+//		--------------------------
+//		7.2   Borders-Width
+//		7.2.1 Border-Width
+//		7.2.2 Border-Right
+//		7.2.3 Border-Left
+//		--------------------------
+//		7.3   Borders-Color
+//		7.3.1 Border-Color
+//		7.3.2 Border-Color-Right
+//		7.3.3 Border-Color-Left
+//		--------------------------
+//		7.4   Borders-Style
+//		7.4.1 Border-Style
+//		7.4.2 Border-Style-Right
+//		7.4.3 Border-Style-Left
+//		--------------------------
+//		7.5   Borders-Radius
+//		7.5.1 Border-Right-Radius
+//		7.5.2 Border-Left-Radius
+//		7.5.3 Border-Top-Radius
+//		7.5.4 Border-Bottom-Radius
+//		7.5.5 Border-Top-Right-Radius
+//		7.5.6 Border-Top-Left-Radius
+//		7.5.7 Border-Bottom-Right-Radius
+//		7.5.8 Border-Bottom-Left-Radius
+// ----------------------------------------------
+//	8-  Clear Directions:
+//	8.1 Clear 
+// ----------------------------------------------
+
+// importing resources 
+// ----------------------------------------------
+   
+// global variables
+// ----------------------------------------------
+
+
+// global mixins
+// ----------------------------------------------
+// 1- Clip:
+// 1.1- rect-all
+// ----------------------------------------------
+// $val1: 	rect from top, 
+// $val2: 	rect from $right,
+// $val3:	rect from bottom,
+// $val4:	rect from $left.
+// ----------------------------------------------
+	@mixin rect-all($val1, $val2,$val3,$val4) {
+		@if($left == left) {
+			clip:rect($val1, $val2,$val3,$val4);
+		}
+		@else {
+			clip:rect($val1, $val4,$val3,$val2);
+		}
+	}
+// ----------------------------------------------	
+//
+// 2- margin:
+// 2.1- margin
+// ----------------------------------------------
+// $val1: margin from top, 
+// $val2: margin from $right,
+// $val3: margin from bottom,
+// $val4: margin from $left.
+// ----------------------------------------------
+	@mixin margin($val1, $val2,$val3,$val4) {
+		margin-top:								$val1;
+		margin-bottom:							$val3;
+		margin-#{$right}:						$val2;
+		margin-#{$left}:						$val4;
+	}
+
+// 2.2- margin-right
+// ----------------------------------------------
+// $val: margin from $right, 
+// ----------------------------------------------
+   @mixin margin-right($val) {
+		margin-#{right}:						$val;
+   }
+
+// 2.3- margin-left
+// ----------------------------------------------
+// $val: margin from $left, 
+// ----------------------------------------------
+@mixin margin-left($val) {
+	margin-#{left}:								$val;
+}
+
+// 3- Padding:
+// 3.1- Padding
+// ----------------------------------------------
+// $val1: padding from top, 
+// $val2: padding from $right,
+// $val3: padding from bottom,
+// $val4: padding from $left.
+// ----------------------------------------------
+	@mixin padding($val1, $val2,$val3,$val4) {
+		padding-top:							$val1;
+		padding-bottom:							$val3;
+		padding-#{$right}:						$val2;
+		padding-#{$left}:						$val4;
+	}
+
+// 3.2- Padding-Right
+// ----------------------------------------------
+// $val: padding from $right, 
+// ----------------------------------------------
+	@mixin padding-right($val) {
+		padding-#{$right}:						$val;
+	}
+
+// 3.3- Padding-Left
+// ----------------------------------------------
+// $val: padding from $left. 
+// ----------------------------------------------
+	@mixin padding-left($val) {
+		padding-#{$left}:						$val;
+	}
+	
+// ----------------------------------------------	
+// 4- Floating:
+// 
+// 4.1- Floating-Right
+// ----------------------------------------------
+	@mixin float-right {
+		float:									$right;
+	}
+
+// 4.2- Floating-Left
+// ----------------------------------------------
+	@mixin float-left {
+		float:									$left;
+	}
+
+// 4.3- Floating
+// ----------------------------------------------
+// $dir:Floating Direction
+// ----------------------------------------------
+	@mixin float($dir)
+	{
+		@if($dir==right) {
+			@include float-right;
+		}
+		@else  {
+			@include float-left;
+		}
+	}
+
+// ----------------------------------------------
+
+// 5- Aligment
+//
+// 5.1 Aligment Right
+// ----------------------------------------------
+	@mixin align-right {
+		text-align:								$right;
+	}
+
+// 5.2 Aligment Left
+// ----------------------------------------------
+	@mixin align-left {
+		text-align:								$left;
+	}
+
+// 5.3- Text Aligment
+// ----------------------------------------------
+// $dir: Aligment Direction
+// ----------------------------------------------
+	@mixin text-align($dir){
+		@if $dir==right {
+			@include align-right;
+		}
+		@else {
+			@include align-left;
+		}
+	}			
+
+// ----------------------------------------------
+
+// 6- Directions
+//
+// 6.1 Right
+// ----------------------------------------------
+// $distance: 	Right Distnace
+// ----------------------------------------------
+	@mixin right($distance) {
+		#{$right}:								$distance;
+	}
+
+// 6.2 Left
+// ----------------------------------------------
+// $distance: 	Left Distnace
+// ----------------------------------------------
+	@mixin left($distance) {
+		#{$left}:								$distance;
+	}
+
+// ----------------------------------------------
+// 7-	Borders
+//
+// 7.1	Border General
+// ------------------------------------------
+// $val : 	border sepcs, 
+// ------------------------------------------
+	@mixin border-right($specs) {
+		border-#{$right}:$specs;
+	} 
+
+// -----------------------
+// 7.2	Border General
+// ------------------------------------------
+// $val : 	border sepcs, 
+// ------------------------------------------
+	@mixin border-left($specs) {
+		border-#{$left}:$specs;
+	} 
+
+// 7.2 Border-Width
+// -----------------------
+// 7.2.1 Border-Width
+// ------------------------------------------
+// $val1: 	border-wdith from top, 
+// $val2: 	border-wdith from $right,
+// $val3:	border-wdith from bottom,
+// $val4:	border-wdith from $left.
+// ------------------------------------------
+
+	@mixin border-width($val1,$val2,$val3,$val4) {
+		border-top-width:						$val1;
+		border-bottom-width:					$val3;
+		border-#{$right}-width:					$val2;
+		border-#{$left}-width:					$val4;	
+	}
+
+// 7.2.2 Border-Right-Width
+// ------------------------------------------
+// $val: 	border-wdith from left, 
+// ------------------------------------------
+
+	@mixin	border-right-width($val){
+			border-#{$right}-width:				$val;
+	}
+
+// 7.2.3 Border-Left-Width
+// ------------------------------------------
+// $val: 	border-wdith from left, 
+// ------------------------------------------
+	@mixin	border-left-width($val){
+			border-#{$left}-width:				$val;
+	}
+
+
+// 7.3 Borders-Color
+// -----------------------
+// 7.2.1 Border-Color
+// ------------------------------------------
+// $val1: 	border-color from top, 
+// $val2: 	border-color from $right,
+// $val3:	border-color from bottom,
+// $val4:	border-color from $left.
+// ------------------------------------------
+
+	@mixin border-color($val1,$val2,$val3,$val4) {
+		border-top-color:						$val1;
+		border-bottom-color:					$val3;
+		border-#{$right}-color:					$val2;
+		border-#{$left}-color:					$val4;	
+	}
+
+// 7.2.2 Border-Right-Color
+// ------------------------------------------
+// $val: 	border-color from right, 
+// ------------------------------------------
+
+	@mixin	border-right-color($val){
+			border-#{$right}-color:				$val;
+	}
+
+// 7.2.3 Border-Left-Color
+// ------------------------------------------
+// $val: 	border-color from left, 
+// ------------------------------------------
+	@mixin	border-left-color($val){
+			border-#{$left}-color:				$val;
+	}
+
+// 7.3 Borders-Style
+// -----------------------
+// 7.3.1 Border-Style
+// ------------------------------------------
+// $val1: 	border-style from top, 
+// $val2: 	border-style from $right,
+// $val3:	border-style from bottom,
+// $val4:	border-style from $left.
+// ------------------------------------------
+
+	@mixin border-style($val1,$val2,$val3,$val4){
+		border-top-style:						$val1;
+		border-bottom-style:					$val3;
+		border-#{$right}-style:					$val2;
+		border-#{$left}-style:					$val4;	// 7.2.2 Border-Right-Width
+	}
+
+// 7.4.2 Border-Right-Style
+// ------------------------------------------
+// $val: 	border-wdith from right, 
+// ------------------------------------------
+	@mixin	border-right-style($val){
+			border-#{$right}-style:				$val;
+	}
+
+// 7.4.3 Border-Left-Style
+// ------------------------------------------
+// $val: 	border-style from left, 
+// ------------------------------------------
+	@mixin	border-left-style($val){
+			border-#{$left}-style:				$val;
+	}
+
+
+// 7.5	 Borders-Radius
+// -----------------------
+// 7.5.1 Border-Radius
+// ------------------------------------------
+// $val: 	border-radius 
+// ------------------------------------------
+	@mixin border-radius($val) {
+		-webkit-border-radius:					$val;
+		-moz-border-radius:						$val;
+		-khtml-border-radius:					$val;
+		border-radius:							$val; 
+	}
+
+// 7.5.1 Border-Radius-right
+// ------------------------------------------
+// $val: 	border-radius from right side
+// ------------------------------------------
+	@mixin border-right-radius($val){
+		 border-bottom-#{$right}-radius:		$val;
+		-webkit-border-bottom-#{$right}-radius: $val;
+		-moz-border-bottom-#{$right}-radius:	$val;
+		-khtml-border-bottom-#{$right}-radius: 	$val;
+
+		 border-top-#{$right}-radius:			$val;
+		-webkit-border-top-#{$right}-radius:	$val;
+		-moz-border-top-#{$right}-radius:		$val;
+		-khtml-border-top-#{$right}-radius:		$val;
+	}
+
+
+// 7.5.2 Border-Radius-Left
+// ------------------------------------------
+// $val: 	border-radius from left side
+// ------------------------------------------
+	@mixin border-left-radius($val){
+		 border-bottom-#{$left}-radius:			$val;
+		-webkit-border-bottom-#{$left}-radius:	$val;
+		-moz-border-bottom-#{$left}-radius:		$val;
+		-khtml-border-bottom-#{$left}-radius:	$val;
+
+		 border-top-#{$left}-radius:			$val;
+		-webkit-border-top-#{$left}-radius:		$val;
+		-moz-border-top-#{$left}-radius:		$val;
+		-khtml-border-top-#{$left}-radius:		$val;
+	}
+
+// 7.5.3 Border-Radius-Top
+// ------------------------------------------
+// $val: 	border-radius from top side
+// ------------------------------------------
+	@mixin border-top-radius($val){
+		 border-top-#{$right}-radius:			$val;
+		-webkit-border-top-#{$right}-radius:	$val;
+		-moz-border-top-#{$right}-radius:		$val;
+		-khtml-border-top-#{$right}-radius:		$val;
+
+		 border-top-#{$left}-radius:			$val;
+		-webkit-border-top-#{$left}-radius:		$val;
+		-moz-border-top-#{$left}-radius:		$val;
+		-khtml-border-top-#{$left}-radius:		$val;
+	}
+
+// 7.5.4 Border-Radius-Bottom
+// ------------------------------------------
+// $val: 	border-radius from bottom side
+// ------------------------------------------
+	@mixin border-bottom-radius($val){
+		 border-bottom-#{$right}-radius:		$val;
+		-webkit-border-bottom-#{$right}-radius: $val;
+		-moz-border-bottom-#{$right}-radius:	$val;
+		-khtml-border-bottom-#{$right}-radius: 	$val;
+
+		 border-bottom-#{$left}-radius:			$val;
+		-webkit-border-bottom-#{$left}-radius:	$val;
+		-moz-border-bottom-#{$left}-radius:		$val;
+		-khtml-border-bottom-#{$left}-radius:	$val;	
+	}
+
+// 7.5.5 Border-Top-Right-Radius
+// ------------------------------------------
+// $val: 	border-radius from top right side
+// ------------------------------------------
+	@mixin border-top-right-radius($val) {
+		 border-top-right-radius:				$val; 
+		-moz-border-radius-topright:			$val;
+		-webkit-border-top-right-radius:		$val; 
+		-khtml-border-top-right-radius:			$val; 
+	}
+
+// 7.5.6 Border-Top-Left-Radius
+// ------------------------------------------
+// $val: 	border-radius from top left side
+// ------------------------------------------
+	@mixin border-top-left-radius($val) {
+		 border-top-left-radius:				$val; 
+		-moz-border-radius-topleft:				$val;
+		-webkit-border-top-left-radius:			$val; 
+		-khtml-border-top-left-radius:			$val; 
+	}
+
+// 7.5.6 Border-Bottom-right-Radius
+// ------------------------------------------
+// $val: 	border-radius from top left side
+// ------------------------------------------
+	@mixin border-bottom-right-radius($val) {
+		 border-bottom-right-radius:			$val; 
+		-moz-border-radius-bottomright:			$val;
+		-webkit-border-bottom-right-radius:		$val; 
+		-khtml-border-bottom-right-radius:		$val; 
+	}
+
+// 7.5.6 Border-Top-Left-Radius
+// ------------------------------------------
+// $val: 	border-radius from top left side
+// ------------------------------------------
+	@mixin border-bottom-left-radius($val) {
+		 border-bottom-left-radius:				$val; 
+		-moz-border-radius-bottomleft:			$val;
+		-webkit-border-bottom-left-radius:		$val; 
+		-khtml-border-bottom-left-radius:		$val; 
+	}
+
+// ----------------------------------------------
+// 8-	Clear Directions:
+// 8.1- Clear:
+// ----------------------------------------------
+// $dir: 	clear direction,
+// ----------------------------------------------
+	@mixin clear($dir){
+		@if($dir==right){
+			clear:$right;		
+		}
+		@else {
+			clear:$left;		
+		}
+	}
+	:@options{ :@has_childrenT:@children[So:Sass::Tree::CommentNode
+;i:
+@type:silent;@:@value["†/* ------------------------------------------
+ * author: 	Omar Najeeb Khanfer
+ * email: 	omar.aljaber@gmail.com
+ * ------------------------------------------ */;
+[ o;
+;i;;;@;["e/* ------------------------------------------
+ * ------------------------------------------
+ * table of contents (recommended):
+ * ------------------------------------------
+ * * importing resources 
+ * 	 no imports
+ * * global variables
+ *	 no variables
+ * * global mixins
+ *------------------------------------------ 
+ *	1- clip:
+ *		1.1	Rect
+ *------------------------------------------ 
+ *	2- margin:
+ *		2.1	Margin
+ *		2.2 Margin-Right
+ *		2.3	Margin-Left
+ *------------------------------------------ 
+ *	3- Padding:
+ *		3.1	Padding
+ *		3.2 Padding-right
+ *		3.3	Padding-left
+ *------------------------------------------ 
+ *	4- Floating:
+ *		4.1 Float-right
+ *		4.2 Float-left
+ *		4.3 Float
+ *------------------------------------------
+ *	5- Aligment:
+ *		5.1 Aligment-right
+ *		5.2 Aligment-left
+ *		5.3 Text-aligment
+ *------------------------------------------
+ *	6- Directions:
+ *		6.1 Right
+ *		6.2 Left
+ *------------------------------------------
+ *	7- Borders:
+ *		7.1	  Borders General
+ *		7.1.1 Border-Right
+ *		7.1.2 Border-Left
+ *		--------------------------
+ *		7.2   Borders-Width
+ *		7.2.1 Border-Width
+ *		7.2.2 Border-Right
+ *		7.2.3 Border-Left
+ *		--------------------------
+ *		7.3   Borders-Color
+ *		7.3.1 Border-Color
+ *		7.3.2 Border-Color-Right
+ *		7.3.3 Border-Color-Left
+ *		--------------------------
+ *		7.4   Borders-Style
+ *		7.4.1 Border-Style
+ *		7.4.2 Border-Style-Right
+ *		7.4.3 Border-Style-Left
+ *		--------------------------
+ *		7.5   Borders-Radius
+ *		7.5.1 Border-Right-Radius
+ *		7.5.2 Border-Left-Radius
+ *		7.5.3 Border-Top-Radius
+ *		7.5.4 Border-Bottom-Radius
+ *		7.5.5 Border-Top-Right-Radius
+ *		7.5.6 Border-Top-Left-Radius
+ *		7.5.7 Border-Bottom-Right-Radius
+ *		7.5.8 Border-Bottom-Left-Radius
+ * ----------------------------------------------
+ *	8-  Clear Directions:
+ *	8.1 Clear 
+ * ---------------------------------------------- */;
+[ o;
+;iR;;;@;["Q/* importing resources 
+ * ---------------------------------------------- */;
+[ o;
+;iU;;;@;["M/* global variables
+ * ---------------------------------------------- */;
+[ o;
+;iY;;;@;["5/* global mixins
+ * ----------------------------------------------
+ * 1- Clip:
+ * 1.1- rect-all
+ * ----------------------------------------------
+ * $val1: 	rect from top, 
+ * $val2: 	rect from $right,
+ * $val3:	rect from bottom,
+ * $val4:	rect from $left.
+ * ---------------------------------------------- */;
+[ o:Sass::Tree::MixinDefNode;ic:@splat0;@;	T:
+@args[	[o:Sass::Script::Variable;@:@underscored_name"	val1:
+@name"	val10[o;;@;"	val2;"	val20[o;;@;"	val3;"	val30[o;;@;"	val4;"	val40;"rect-all;
+[u:Sass::Tree::IfNode][o:Sass::Script::Operation
+:
+@lineid:@operator:eq:@operand2o:Sass::Script::String	;id:
+@type:identifier:@options{ :@value"	left;@:@operand1o:Sass::Script::Variable	;id;@:@underscored_name"	left:
+@name"	leftu:Sass::Tree::IfNodeT[00[o:Sass::Tree::PropNode:
+@lineih:@prop_syntax:new:@options{ :@valueo:Sass::Script::Funcall;ih:@splat0;	@:
+@args[	o:Sass::Script::Variable	;ih;	@:@underscored_name"	val1:
+@name"	val1o;	;ih;	@;"	val4;"	val4o;	;ih;	@;"	val3;"	val3o;	;ih;	@;"	val2;"	val2:@keywords{ ;"	rect:
+@tabsi ;["	clip:@children[ [o:Sass::Tree::PropNode;ie:@prop_syntax:new;@;o:Sass::Script::Funcall;ie:@splat0;@:
+@args[	o;	;ie;@;"	val1;"	val1o;	;ie;@;"	val2;"	val2o;	;ie;@;"	val3;"	val3o;	;ie;@;"	val4;"	val4:@keywords{ ;"	rect:
+@tabsi ;["	clip:@children[ o;
+;ik;;;@;["./* ----------------------------------------------	
+ *
+ * 2- margin:
+ * 2.1- margin
+ * ----------------------------------------------
+ * $val1: margin from top, 
+ * $val2: margin from $right,
+ * $val3: margin from bottom,
+ * $val4: margin from $left.
+ * ---------------------------------------------- */;
+[ o;;iu;0;@;	T;[	[o;;@;"	val1;"	val10[o;;@;"	val2;"	val20[o;;@;"	val3;"	val30[o;;@;"	val4;"	val40;"margin;
+[	o:Sass::Tree::PropNode;iv:@prop_syntax:new;@;o;	;iv;@;"	val1;"	val1:
+@tabsi ;["margin-top;
+[ o;;iw;;;@;o;	;iw;@;"	val3;"	val3;i ;["margin-bottom;
+[ o;;ix;;;@;o;	;ix;@;"	val2;"	val2;i ;["margin-o;	;ix;@;"
+right;"
+right;
+[ o;;iy;;;@;o;	;iy;@;"	val4;"	val4;i ;["margin-o;	;iy;@;"	left;"	left;
+[ o;
+;i|;;;@;["ô/* 2.2- margin-right
+ * ----------------------------------------------
+ * $val: margin from $right, 
+ * ---------------------------------------------- */;
+[ o;;i{;0;@;	T;[[o;;@;"val;"val0;"margin-right;
+[o;;i|;;;@;o;	;i|;@;"val;"val;i ;["margin-o:Sass::Script::String	;i|;:identifier;@;"
+right;
+[ o;
+;i;;;@;["ó/* 2.3- margin-left
+ * ----------------------------------------------
+ * $val: margin from $left, 
+ * ---------------------------------------------- */;
+[ o;;iÉ;0;@;	T;[[o;;@;"val;"val0;"margin-left;
+[o;;iÑ;;;@;o;	;iÑ;@;"val;"val;i ;["margin-o;	;iÑ;;;@;"	left;
+[ o;
+;iá;;;@;["˛/* 3- Padding:
+ * 3.1- Padding
+ * ----------------------------------------------
+ * $val1: padding from top, 
+ * $val2: padding from $right,
+ * $val3: padding from bottom,
+ * $val4: padding from $left.
+ * ---------------------------------------------- */;
+[ o;;iè;0;@;	T;[	[o;;@;"	val1;"	val10[o;;@;"	val2;"	val20[o;;@;"	val3;"	val30[o;;@;"	val4;"	val40;"padding;
+[	o;;iê;;;@;o;	;iê;@;"	val1;"	val1;i ;["padding-top;
+[ o;;ië;;;@;o;	;ië;@;"	val3;"	val3;i ;["padding-bottom;
+[ o;;ií;;;@;o;	;ií;@;"	val2;"	val2;i ;["padding-o;	;ií;@;"
+right;"
+right;
+[ o;;iì;;;@;o;	;iì;@;"	val4;"	val4;i ;["padding-o;	;iì;@;"	left;"	left;
+[ o;
+;iñ;;;@;["õ/* 3.2- Padding-Right
+ * ----------------------------------------------
+ * $val: padding from $right, 
+ * ---------------------------------------------- */;
+[ o;;iö;0;@;	T;[[o;;@;"val;"val0;"padding-right;
+[o;;iõ;;;@;o;	;iõ;@;"val;"val;i ;["padding-o;	;iõ;@;"
+right;"
+right;
+[ o;
+;iû;;;@;["ô/* 3.3- Padding-Left
+ * ----------------------------------------------
+ * $val: padding from $left. 
+ * ---------------------------------------------- */;
+[ o;;i¢;0;@;	T;[[o;;@;"val;"val0;"padding-left;
+[o;;i£;;;@;o;	;i£;@;"val;"val;i ;["padding-o;	;i£;@;"	left;"	left;
+[ o;
+;i¶;;;@;["í/* ----------------------------------------------	
+ * 4- Floating:
+ * 
+ * 4.1- Floating-Right
+ * ---------------------------------------------- */;
+[ o;;i´;0;@;	T;[ ;"float-right;
+[o;;i¨;;;@;o;	;i¨;@;"
+right;"
+right;i ;["
+float;
+[ o;
+;iØ;;;@;["O/* 4.2- Floating-Left
+ * ---------------------------------------------- */;
+[ o;;i±;0;@;	T;[ ;"float-left;
+[o;;i≤;;;@;o;	;i≤;@;"	left;"	left;i ;["
+float;
+[ o;
+;iµ;;;@;["í/* 4.3- Floating
+ * ----------------------------------------------
+ * $dir:Floating Direction
+ * ---------------------------------------------- */;
+[ o;;i∫;0;@;	T;[[o;;@;"dir;"dir0;"
+float;
+[u;œ[o:Sass::Script::Operation
+:
+@lineiª:@operator:eq:@operand2o:Sass::Script::String	;iª:
+@type:identifier:@options{ :@value"
+right;@:@operand1o:Sass::Script::Variable	;iª;@:@underscored_name"dir:
+@name"diru:Sass::Tree::IfNode{[00[o:Sass::Tree::MixinNode:
+@lineiø:@splat0:@options{ :
+@args[ :@keywords{ :
+@name"float-left:@children[ [o:Sass::Tree::MixinNode;iº:@splat0;@:
+@args[ :@keywords{ ;"float-right:@children[ o;
+;i√;;;@;["9/* ---------------------------------------------- */;
+[ o;
+;i≈;;;@;["a/* 5- Aligment
+ *
+ * 5.1 Aligment Right
+ * ---------------------------------------------- */;
+[ o;;i…;0;@;	T;[ ;"align-right;
+[o;;i ;;;@;o;	;i ;@;"
+right;"
+right;i ;["text-align;
+[ o;
+;iÕ;;;@;["N/* 5.2 Aligment Left
+ * ---------------------------------------------- */;
+[ o;;iœ;0;@;	T;[ ;"align-left;
+[o;;i–;;;@;o;	;i–;@;"	left;"	left;i ;["text-align;
+[ o;
+;i”;;;@;["ò/* 5.3- Text Aligment
+ * ----------------------------------------------
+ * $dir: Aligment Direction
+ * ---------------------------------------------- */;
+[ o;;i◊;0;@;	T;[[o;;@;"dir;"dir0;"text-align;
+[u;œ[o:Sass::Script::Operation
+:
+@lineiÿ:@operator:eq:@operand2o:Sass::Script::String	;iÿ:
+@type:identifier:@options{ :@value"
+right;@:@operand1o:Sass::Script::Variable	;iÿ;@:@underscored_name"dir:
+@name"diru:Sass::Tree::IfNode{[00[o:Sass::Tree::MixinNode:
+@linei‹:@splat0:@options{ :
+@args[ :@keywords{ :
+@name"align-left:@children[ [o:Sass::Tree::MixinNode;iŸ:@splat0;@:
+@args[ :@keywords{ ;"align-right:@children[ o;
+;i‡;;;@;["9/* ---------------------------------------------- */;
+[ o;
+;i‚;;;@;["•/* 6- Directions
+ *
+ * 6.1 Right
+ * ----------------------------------------------
+ * $distance: 	Right Distnace
+ * ---------------------------------------------- */;
+[ o;;iË;0;@;	T;[[o;;@;"distance;"distance0;"
+right;
+[o;;iÈ;;;@;o;	;iÈ;@;"distance;"distance;i ;[o;	;iÈ;@;"
+right;"
+right;
+[ o;
+;iÏ;;;@;["è/* 6.2 Left
+ * ----------------------------------------------
+ * $distance: 	Left Distnace
+ * ---------------------------------------------- */;
+[ o;;i;0;@;	T;[[o;;@;"distance;"distance0;"	left;
+[o;;iÒ;;;@;o;	;iÒ;@;"distance;"distance;i ;[o;	;iÒ;@;"	left;"	left;
+[ o;
+;iÙ;;;@;["—/* ----------------------------------------------
+ * 7-	Borders
+ *
+ * 7.1	Border General
+ * ------------------------------------------
+ * $val : 	border sepcs, 
+ * ------------------------------------------ */;
+[ o;;i˚;0;@;	T;[[o;;@;"
+specs;"
+specs0;"border-right;
+[o;;i¸;;;@;o;	;i¸;@;"
+specs;"
+specs;i ;["border-o;	;i¸;@;"
+right;"
+right;
+[ o;
+;iˇ;;;@;["©/* -----------------------
+ * 7.2	Border General
+ * ------------------------------------------
+ * $val : 	border sepcs, 
+ * ------------------------------------------ */;
+[ o;;i;0;@;	T;[[o;;@;"
+specs;"
+specs0;"border-left;
+[o;;i;;;@;o;	;i;@;"
+specs;"
+specs;i ;["border-o;	;i;@;"	left;"	left;
+[ o;
+;i;;;@;["2/* 7.2 Border-Width
+ * -----------------------
+ * 7.2.1 Border-Width
+ * ------------------------------------------
+ * $val1: 	border-wdith from top, 
+ * $val2: 	border-wdith from $right,
+ * $val3:	border-wdith from bottom,
+ * $val4:	border-wdith from $left.
+ * ------------------------------------------ */;
+[ o;;i;0;@;	T;[	[o;;@;"	val1;"	val10[o;;@;"	val2;"	val20[o;;@;"	val3;"	val30[o;;@;"	val4;"	val40;"border-width;
+[	o;;i;;;@;o;	;i;@;"	val1;"	val1;i ;["border-top-width;
+[ o;;i;;;@;o;	;i;@;"	val3;"	val3;i ;["border-bottom-width;
+[ o;;i;;;@;o;	;i;@;"	val2;"	val2;i ;["border-o;	;i;@;"
+right;"
+right"-width;
+[ o;;i;;;@;o;	;i;@;"	val4;"	val4;i ;["border-o;	;i;@;"	left;"	left"-width;
+[ o;
+;i;;;@;["ù/* 7.2.2 Border-Right-Width
+ * ------------------------------------------
+ * $val: 	border-wdith from left, 
+ * ------------------------------------------ */;
+[ o;;i;0;@;	T;[[o;;@;"val;"val0;"border-right-width;
+[o;;i;;;@;o;	;i;@;"val;"val;i ;["border-o;	;i;@;"
+right;"
+right"-width;
+[ o;
+;i";;;@;["ú/* 7.2.3 Border-Left-Width
+ * ------------------------------------------
+ * $val: 	border-wdith from left, 
+ * ------------------------------------------ */;
+[ o;;i&;0;@;	T;[[o;;@;"val;"val0;"border-left-width;
+[o;;i';;;@;o;	;i';@;"val;"val;i ;["border-o;	;i';@;"	left;"	left"-width;
+[ o;
+;i+;;;@;["3/* 7.3 Borders-Color
+ * -----------------------
+ * 7.2.1 Border-Color
+ * ------------------------------------------
+ * $val1: 	border-color from top, 
+ * $val2: 	border-color from $right,
+ * $val3:	border-color from bottom,
+ * $val4:	border-color from $left.
+ * ------------------------------------------ */;
+[ o;;i5;0;@;	T;[	[o;;@;"	val1;"	val10[o;;@;"	val2;"	val20[o;;@;"	val3;"	val30[o;;@;"	val4;"	val40;"border-color;
+[	o;;i6;;;@;o;	;i6;@;"	val1;"	val1;i ;["border-top-color;
+[ o;;i7;;;@;o;	;i7;@;"	val3;"	val3;i ;["border-bottom-color;
+[ o;;i8;;;@;o;	;i8;@;"	val2;"	val2;i ;["border-o;	;i8;@;"
+right;"
+right"-color;
+[ o;;i9;;;@;o;	;i9;@;"	val4;"	val4;i ;["border-o;	;i9;@;"	left;"	left"-color;
+[ o;
+;i<;;;@;["û/* 7.2.2 Border-Right-Color
+ * ------------------------------------------
+ * $val: 	border-color from right, 
+ * ------------------------------------------ */;
+[ o;;iA;0;@;	T;[[o;;@;"val;"val0;"border-right-color;
+[o;;iB;;;@;o;	;iB;@;"val;"val;i ;["border-o;	;iB;@;"
+right;"
+right"-color;
+[ o;
+;iE;;;@;["ú/* 7.2.3 Border-Left-Color
+ * ------------------------------------------
+ * $val: 	border-color from left, 
+ * ------------------------------------------ */;
+[ o;;iI;0;@;	T;[[o;;@;"val;"val0;"border-left-color;
+[o;;iJ;;;@;o;	;iJ;@;"val;"val;i ;["border-o;	;iJ;@;"	left;"	left"-color;
+[ o;
+;iM;;;@;["3/* 7.3 Borders-Style
+ * -----------------------
+ * 7.3.1 Border-Style
+ * ------------------------------------------
+ * $val1: 	border-style from top, 
+ * $val2: 	border-style from $right,
+ * $val3:	border-style from bottom,
+ * $val4:	border-style from $left.
+ * ------------------------------------------ */;
+[ o;;iW;0;@;	T;[	[o;;@;"	val1;"	val10[o;;@;"	val2;"	val20[o;;@;"	val3;"	val30[o;;@;"	val4;"	val40;"border-style;
+[
+o;;iX;;;@;o;	;iX;@;"	val1;"	val1;i ;["border-top-style;
+[ o;;iY;;;@;o;	;iY;@;"	val3;"	val3;i ;["border-bottom-style;
+[ o;;iZ;;;@;o;	;iZ;@;"	val2;"	val2;i ;["border-o;	;iZ;@;"
+right;"
+right"-style;
+[ o;;i[;;;@;o;	;i[;@;"	val4;"	val4;i ;["border-o;	;i[;@;"	left;"	left"-style;
+[ o;
+;i[;;;@;["#/* 7.2.2 Border-Right-Width */;
+[ o;
+;i^;;;@;["û/* 7.4.2 Border-Right-Style
+ * ------------------------------------------
+ * $val: 	border-wdith from right, 
+ * ------------------------------------------ */;
+[ o;;ib;0;@;	T;[[o;;@;"val;"val0;"border-right-style;
+[o;;ic;;;@;o;	;ic;@;"val;"val;i ;["border-o;	;ic;@;"
+right;"
+right"-style;
+[ o;
+;if;;;@;["ú/* 7.4.3 Border-Left-Style
+ * ------------------------------------------
+ * $val: 	border-style from left, 
+ * ------------------------------------------ */;
+[ o;;ij;0;@;	T;[[o;;@;"val;"val0;"border-left-style;
+[o;;ik;;;@;o;	;ik;@;"val;"val;i ;["border-o;	;ik;@;"	left;"	left"-style;
+[ o;
+;io;;;@;["¿/* 7.5	 Borders-Radius
+ * -----------------------
+ * 7.5.1 Border-Radius
+ * ------------------------------------------
+ * $val: 	border-radius 
+ * ------------------------------------------ */;
+[ o;;iu;0;@;	T;[[o;;@;"val;"val0;"border-radius;
+[	o;;iv;;;@;o;	;iv;@;"val;"val;i ;["-webkit-border-radius;
+[ o;;iw;;;@;o;	;iw;@;"val;"val;i ;["-moz-border-radius;
+[ o;;ix;;;@;o;	;ix;@;"val;"val;i ;["-khtml-border-radius;
+[ o;;iy;;;@;o;	;iy;@;"val;"val;i ;["border-radius;
+[ o;
+;i|;;;@;["£/* 7.5.1 Border-Radius-right
+ * ------------------------------------------
+ * $val: 	border-radius from right side
+ * ------------------------------------------ */;
+[ o;;iÄ;0;@;	T;[[o;;@;"val;"val0;"border-right-radius;
+[o;;iÅ;;;@;o;	;iÅ;@;"val;"val;i ;["border-bottom-o;	;iÅ;@;"
+right;"
+right"-radius;
+[ o;;iÇ;;;@;o;	;iÇ;@;"val;"val;i ;["-webkit-border-bottom-o;	;iÇ;@;"
+right;"
+right"-radius;
+[ o;;iÉ;;;@;o;	;iÉ;@;"val;"val;i ;["-moz-border-bottom-o;	;iÉ;@;"
+right;"
+right"-radius;
+[ o;;iÑ;;;@;o;	;iÑ;@;"val;"val;i ;["-khtml-border-bottom-o;	;iÑ;@;"
+right;"
+right"-radius;
+[ o;;iÜ;;;@;o;	;iÜ;@;"val;"val;i ;["border-top-o;	;iÜ;@;"
+right;"
+right"-radius;
+[ o;;iá;;;@;o;	;iá;@;"val;"val;i ;["-webkit-border-top-o;	;iá;@;"
+right;"
+right"-radius;
+[ o;;ià;;;@;o;	;ià;@;"val;"val;i ;["-moz-border-top-o;	;ià;@;"
+right;"
+right"-radius;
+[ o;;iâ;;;@;o;	;iâ;@;"val;"val;i ;["-khtml-border-top-o;	;iâ;@;"
+right;"
+right"-radius;
+[ o;
+;iç;;;@;["°/* 7.5.2 Border-Radius-Left
+ * ------------------------------------------
+ * $val: 	border-radius from left side
+ * ------------------------------------------ */;
+[ o;;ië;0;@;	T;[[o;;@;"val;"val0;"border-left-radius;
+[o;;ií;;;@;o;	;ií;@;"val;"val;i ;["border-bottom-o;	;ií;@;"	left;"	left"-radius;
+[ o;;iì;;;@;o;	;iì;@;"val;"val;i ;["-webkit-border-bottom-o;	;iì;@;"	left;"	left"-radius;
+[ o;;iî;;;@;o;	;iî;@;"val;"val;i ;["-moz-border-bottom-o;	;iî;@;"	left;"	left"-radius;
+[ o;;iï;;;@;o;	;iï;@;"val;"val;i ;["-khtml-border-bottom-o;	;iï;@;"	left;"	left"-radius;
+[ o;;ió;;;@;o;	;ió;@;"val;"val;i ;["border-top-o;	;ió;@;"	left;"	left"-radius;
+[ o;;iò;;;@;o;	;iò;@;"val;"val;i ;["-webkit-border-top-o;	;iò;@;"	left;"	left"-radius;
+[ o;;iô;;;@;o;	;iô;@;"val;"val;i ;["-moz-border-top-o;	;iô;@;"	left;"	left"-radius;
+[ o;;iö;;;@;o;	;iö;@;"val;"val;i ;["-khtml-border-top-o;	;iö;@;"	left;"	left"-radius;
+[ o;
+;iù;;;@;["ü/* 7.5.3 Border-Radius-Top
+ * ------------------------------------------
+ * $val: 	border-radius from top side
+ * ------------------------------------------ */;
+[ o;;i°;0;@;	T;[[o;;@;"val;"val0;"border-top-radius;
+[o;;i¢;;;@;o;	;i¢;@;"val;"val;i ;["border-top-o;	;i¢;@;"
+right;"
+right"-radius;
+[ o;;i£;;;@;o;	;i£;@;"val;"val;i ;["-webkit-border-top-o;	;i£;@;"
+right;"
+right"-radius;
+[ o;;i§;;;@;o;	;i§;@;"val;"val;i ;["-moz-border-top-o;	;i§;@;"
+right;"
+right"-radius;
+[ o;;i•;;;@;o;	;i•;@;"val;"val;i ;["-khtml-border-top-o;	;i•;@;"
+right;"
+right"-radius;
+[ o;;iß;;;@;o;	;iß;@;"val;"val;i ;["border-top-o;	;iß;@;"	left;"	left"-radius;
+[ o;;i®;;;@;o;	;i®;@;"val;"val;i ;["-webkit-border-top-o;	;i®;@;"	left;"	left"-radius;
+[ o;;i©;;;@;o;	;i©;@;"val;"val;i ;["-moz-border-top-o;	;i©;@;"	left;"	left"-radius;
+[ o;;i™;;;@;o;	;i™;@;"val;"val;i ;["-khtml-border-top-o;	;i™;@;"	left;"	left"-radius;
+[ o;
+;i≠;;;@;["•/* 7.5.4 Border-Radius-Bottom
+ * ------------------------------------------
+ * $val: 	border-radius from bottom side
+ * ------------------------------------------ */;
+[ o;;i±;0;@;	T;[[o;;@;"val;"val0;"border-bottom-radius;
+[o;;i≤;;;@;o;	;i≤;@;"val;"val;i ;["border-bottom-o;	;i≤;@;"
+right;"
+right"-radius;
+[ o;;i≥;;;@;o;	;i≥;@;"val;"val;i ;["-webkit-border-bottom-o;	;i≥;@;"
+right;"
+right"-radius;
+[ o;;i¥;;;@;o;	;i¥;@;"val;"val;i ;["-moz-border-bottom-o;	;i¥;@;"
+right;"
+right"-radius;
+[ o;;iµ;;;@;o;	;iµ;@;"val;"val;i ;["-khtml-border-bottom-o;	;iµ;@;"
+right;"
+right"-radius;
+[ o;;i∑;;;@;o;	;i∑;@;"val;"val;i ;["border-bottom-o;	;i∑;@;"	left;"	left"-radius;
+[ o;;i∏;;;@;o;	;i∏;@;"val;"val;i ;["-webkit-border-bottom-o;	;i∏;@;"	left;"	left"-radius;
+[ o;;iπ;;;@;o;	;iπ;@;"val;"val;i ;["-moz-border-bottom-o;	;iπ;@;"	left;"	left"-radius;
+[ o;;i∫;;;@;o;	;i∫;@;"val;"val;i ;["-khtml-border-bottom-o;	;i∫;@;"	left;"	left"-radius;
+[ o;
+;iΩ;;;@;["´/* 7.5.5 Border-Top-Right-Radius
+ * ------------------------------------------
+ * $val: 	border-radius from top right side
+ * ------------------------------------------ */;
+[ o;;i¡;0;@;	T;[[o;;@;"val;"val0;"border-top-right-radius;
+[	o;;i¬;;;@;o;	;i¬;@;"val;"val;i ;["border-top-right-radius;
+[ o;;i√;;;@;o;	;i√;@;"val;"val;i ;[" -moz-border-radius-topright;
+[ o;;iƒ;;;@;o;	;iƒ;@;"val;"val;i ;["$-webkit-border-top-right-radius;
+[ o;;i≈;;;@;o;	;i≈;@;"val;"val;i ;["#-khtml-border-top-right-radius;
+[ o;
+;i»;;;@;["©/* 7.5.6 Border-Top-Left-Radius
+ * ------------------------------------------
+ * $val: 	border-radius from top left side
+ * ------------------------------------------ */;
+[ o;;iÃ;0;@;	T;[[o;;@;"val;"val0;"border-top-left-radius;
+[	o;;iÕ;;;@;o;	;iÕ;@;"val;"val;i ;["border-top-left-radius;
+[ o;;iŒ;;;@;o;	;iŒ;@;"val;"val;i ;["-moz-border-radius-topleft;
+[ o;;iœ;;;@;o;	;iœ;@;"val;"val;i ;["#-webkit-border-top-left-radius;
+[ o;;i–;;;@;o;	;i–;@;"val;"val;i ;[""-khtml-border-top-left-radius;
+[ o;
+;i”;;;@;["≠/* 7.5.6 Border-Bottom-right-Radius
+ * ------------------------------------------
+ * $val: 	border-radius from top left side
+ * ------------------------------------------ */;
+[ o;;i◊;0;@;	T;[[o;;@;"val;"val0;"border-bottom-right-radius;
+[	o;;iÿ;;;@;o;	;iÿ;@;"val;"val;i ;["border-bottom-right-radius;
+[ o;;iŸ;;;@;o;	;iŸ;@;"val;"val;i ;["#-moz-border-radius-bottomright;
+[ o;;i⁄;;;@;o;	;i⁄;@;"val;"val;i ;["'-webkit-border-bottom-right-radius;
+[ o;;i€;;;@;o;	;i€;@;"val;"val;i ;["&-khtml-border-bottom-right-radius;
+[ o;
+;iﬁ;;;@;["©/* 7.5.6 Border-Top-Left-Radius
+ * ------------------------------------------
+ * $val: 	border-radius from top left side
+ * ------------------------------------------ */;
+[ o;;i‚;0;@;	T;[[o;;@;"val;"val0;"border-bottom-left-radius;
+[	o;;i„;;;@;o;	;i„;@;"val;"val;i ;["border-bottom-left-radius;
+[ o;;i‰;;;@;o;	;i‰;@;"val;"val;i ;[""-moz-border-radius-bottomleft;
+[ o;;iÂ;;;@;o;	;iÂ;@;"val;"val;i ;["&-webkit-border-bottom-left-radius;
+[ o;;iÊ;;;@;o;	;iÊ;@;"val;"val;i ;["%-khtml-border-bottom-left-radius;
+[ o;
+;iÈ;;;@;["⁄/* ----------------------------------------------
+ * 8-	Clear Directions:
+ * 8.1- Clear:
+ * ----------------------------------------------
+ * $dir: 	clear direction,
+ * ---------------------------------------------- */;
+[ o;;iÔ;0;@;	T;[[o;;@;"dir;"dir0;"
+clear;
+[u;5[o:Sass::Script::Operation
+:
+@linei:@operator:eq:@operand2o:Sass::Script::String	;i:
+@type:identifier:@options{ :@value"
+right;@:@operand1o:Sass::Script::Variable	;i;@:@underscored_name"dir:
+@name"diru:Sass::Tree::IfNodeΩ[00[o:Sass::Tree::PropNode:
+@lineiÙ:@prop_syntax:new:@options{ :@valueo:Sass::Script::Variable	;iÙ;	@:@underscored_name"	left:
+@name"	left:
+@tabsi ;["
+clear:@children[ [o:Sass::Tree::PropNode;iÒ:@prop_syntax:new;@;o;	;iÒ;@;"
+right;"
+right:
+@tabsi ;["
+clear:@children[ 

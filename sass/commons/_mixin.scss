@@ -1,0 +1,503 @@
+// ------------------------------------------
+// author: 	Omar Najeeb Khanfer
+// email: 	omar.aljaber@gmail.com
+// ------------------------------------------
+
+// ------------------------------------------
+// ------------------------------------------
+// table of contents (recommended):
+// ------------------------------------------
+// * importing resources 
+// 	 no imports
+// * global variables
+//	 no variables
+// * global mixins
+//------------------------------------------ 
+//	1- clip:
+//		1.1	Rect
+//------------------------------------------ 
+//	2- margin:
+//		2.1	Margin
+//		2.2 Margin-Right
+//		2.3	Margin-Left
+//------------------------------------------ 
+//	3- Padding:
+//		3.1	Padding
+//		3.2 Padding-right
+//		3.3	Padding-left
+//------------------------------------------ 
+//	4- Floating:
+//		4.1 Float-right
+//		4.2 Float-left
+//		4.3 Float
+//------------------------------------------
+//	5- Aligment:
+//		5.1 Aligment-right
+//		5.2 Aligment-left
+//		5.3 Text-aligment
+//------------------------------------------
+//	6- Directions:
+//		6.1 Right
+//		6.2 Left
+//------------------------------------------
+//	7- Borders:
+//		7.1	  Borders General
+//		7.1.1 Border-Right
+//		7.1.2 Border-Left
+//		--------------------------
+//		7.2   Borders-Width
+//		7.2.1 Border-Width
+//		7.2.2 Border-Right
+//		7.2.3 Border-Left
+//		--------------------------
+//		7.3   Borders-Color
+//		7.3.1 Border-Color
+//		7.3.2 Border-Color-Right
+//		7.3.3 Border-Color-Left
+//		--------------------------
+//		7.4   Borders-Style
+//		7.4.1 Border-Style
+//		7.4.2 Border-Style-Right
+//		7.4.3 Border-Style-Left
+//		--------------------------
+//		7.5   Borders-Radius
+//		7.5.1 Border-Right-Radius
+//		7.5.2 Border-Left-Radius
+//		7.5.3 Border-Top-Radius
+//		7.5.4 Border-Bottom-Radius
+//		7.5.5 Border-Top-Right-Radius
+//		7.5.6 Border-Top-Left-Radius
+//		7.5.7 Border-Bottom-Right-Radius
+//		7.5.8 Border-Bottom-Left-Radius
+// ----------------------------------------------
+//	8-  Clear Directions:
+//	8.1 Clear 
+// ----------------------------------------------
+
+// importing resources 
+// ----------------------------------------------
+   
+// global variables
+// ----------------------------------------------
+
+
+// global mixins
+// ----------------------------------------------
+// 1- Clip:
+// 1.1- rect-all
+// ----------------------------------------------
+// $val1: 	rect from top, 
+// $val2: 	rect from $right,
+// $val3:	rect from bottom,
+// $val4:	rect from $left.
+// ----------------------------------------------
+	@mixin rect-all($val1, $val2,$val3,$val4) {
+		@if($left == left) {
+			clip:rect($val1, $val2,$val3,$val4);
+		}
+		@else {
+			clip:rect($val1, $val4,$val3,$val2);
+		}
+	}
+// ----------------------------------------------	
+//
+// 2- margin:
+// 2.1- margin
+// ----------------------------------------------
+// $val1: margin from top, 
+// $val2: margin from $right,
+// $val3: margin from bottom,
+// $val4: margin from $left.
+// ----------------------------------------------
+	@mixin margin($val1, $val2,$val3,$val4) {
+		margin-top:								$val1;
+		margin-bottom:							$val3;
+		margin-#{$right}:						$val2;
+		margin-#{$left}:						$val4;
+	}
+
+// 2.2- margin-right
+// ----------------------------------------------
+// $val: margin from $right, 
+// ----------------------------------------------
+   @mixin margin-right($val) {
+		margin-#{right}:						$val;
+   }
+
+// 2.3- margin-left
+// ----------------------------------------------
+// $val: margin from $left, 
+// ----------------------------------------------
+@mixin margin-left($val) {
+	margin-#{left}:								$val;
+}
+
+// 3- Padding:
+// 3.1- Padding
+// ----------------------------------------------
+// $val1: padding from top, 
+// $val2: padding from $right,
+// $val3: padding from bottom,
+// $val4: padding from $left.
+// ----------------------------------------------
+	@mixin padding($val1, $val2,$val3,$val4) {
+		padding-top:							$val1;
+		padding-bottom:							$val3;
+		padding-#{$right}:						$val2;
+		padding-#{$left}:						$val4;
+	}
+
+// 3.2- Padding-Right
+// ----------------------------------------------
+// $val: padding from $right, 
+// ----------------------------------------------
+	@mixin padding-right($val) {
+		padding-#{$right}:						$val;
+	}
+
+// 3.3- Padding-Left
+// ----------------------------------------------
+// $val: padding from $left. 
+// ----------------------------------------------
+	@mixin padding-left($val) {
+		padding-#{$left}:						$val;
+	}
+	
+// ----------------------------------------------	
+// 4- Floating:
+// 
+// 4.1- Floating-Right
+// ----------------------------------------------
+	@mixin float-right {
+		float:									$right;
+	}
+
+// 4.2- Floating-Left
+// ----------------------------------------------
+	@mixin float-left {
+		float:									$left;
+	}
+
+// 4.3- Floating
+// ----------------------------------------------
+// $dir:Floating Direction
+// ----------------------------------------------
+	@mixin float($dir)
+	{
+		@if($dir==right) {
+			@include float-right;
+		}
+		@else  {
+			@include float-left;
+		}
+	}
+
+// ----------------------------------------------
+
+// 5- Aligment
+//
+// 5.1 Aligment Right
+// ----------------------------------------------
+	@mixin align-right {
+		text-align:								$right;
+	}
+
+// 5.2 Aligment Left
+// ----------------------------------------------
+	@mixin align-left {
+		text-align:								$left;
+	}
+
+// 5.3- Text Aligment
+// ----------------------------------------------
+// $dir: Aligment Direction
+// ----------------------------------------------
+	@mixin text-align($dir){
+		@if $dir==right {
+			@include align-right;
+		}
+		@else {
+			@include align-left;
+		}
+	}			
+
+// ----------------------------------------------
+
+// 6- Directions
+//
+// 6.1 Right
+// ----------------------------------------------
+// $distance: 	Right Distnace
+// ----------------------------------------------
+	@mixin right($distance) {
+		#{$right}:								$distance;
+	}
+
+// 6.2 Left
+// ----------------------------------------------
+// $distance: 	Left Distnace
+// ----------------------------------------------
+	@mixin left($distance) {
+		#{$left}:								$distance;
+	}
+
+// ----------------------------------------------
+// 7-	Borders
+//
+// 7.1	Border General
+// ------------------------------------------
+// $val : 	border sepcs, 
+// ------------------------------------------
+	@mixin border-right($specs) {
+		border-#{$right}:$specs;
+	} 
+
+// -----------------------
+// 7.2	Border General
+// ------------------------------------------
+// $val : 	border sepcs, 
+// ------------------------------------------
+	@mixin border-left($specs) {
+		border-#{$left}:$specs;
+	} 
+
+// 7.2 Border-Width
+// -----------------------
+// 7.2.1 Border-Width
+// ------------------------------------------
+// $val1: 	border-wdith from top, 
+// $val2: 	border-wdith from $right,
+// $val3:	border-wdith from bottom,
+// $val4:	border-wdith from $left.
+// ------------------------------------------
+
+	@mixin border-width($val1,$val2,$val3,$val4) {
+		border-top-width:						$val1;
+		border-bottom-width:					$val3;
+		border-#{$right}-width:					$val2;
+		border-#{$left}-width:					$val4;	
+	}
+
+// 7.2.2 Border-Right-Width
+// ------------------------------------------
+// $val: 	border-wdith from left, 
+// ------------------------------------------
+
+	@mixin	border-right-width($val){
+			border-#{$right}-width:				$val;
+	}
+
+// 7.2.3 Border-Left-Width
+// ------------------------------------------
+// $val: 	border-wdith from left, 
+// ------------------------------------------
+	@mixin	border-left-width($val){
+			border-#{$left}-width:				$val;
+	}
+
+
+// 7.3 Borders-Color
+// -----------------------
+// 7.2.1 Border-Color
+// ------------------------------------------
+// $val1: 	border-color from top, 
+// $val2: 	border-color from $right,
+// $val3:	border-color from bottom,
+// $val4:	border-color from $left.
+// ------------------------------------------
+
+	@mixin border-color($val1,$val2,$val3,$val4) {
+		border-top-color:						$val1;
+		border-bottom-color:					$val3;
+		border-#{$right}-color:					$val2;
+		border-#{$left}-color:					$val4;	
+	}
+
+// 7.2.2 Border-Right-Color
+// ------------------------------------------
+// $val: 	border-color from right, 
+// ------------------------------------------
+
+	@mixin	border-right-color($val){
+			border-#{$right}-color:				$val;
+	}
+
+// 7.2.3 Border-Left-Color
+// ------------------------------------------
+// $val: 	border-color from left, 
+// ------------------------------------------
+	@mixin	border-left-color($val){
+			border-#{$left}-color:				$val;
+	}
+
+// 7.3 Borders-Style
+// -----------------------
+// 7.3.1 Border-Style
+// ------------------------------------------
+// $val1: 	border-style from top, 
+// $val2: 	border-style from $right,
+// $val3:	border-style from bottom,
+// $val4:	border-style from $left.
+// ------------------------------------------
+
+	@mixin border-style($val1,$val2,$val3,$val4){
+		border-top-style:						$val1;
+		border-bottom-style:					$val3;
+		border-#{$right}-style:					$val2;
+		border-#{$left}-style:					$val4;	// 7.2.2 Border-Right-Width
+	}
+
+// 7.4.2 Border-Right-Style
+// ------------------------------------------
+// $val: 	border-wdith from right, 
+// ------------------------------------------
+	@mixin	border-right-style($val){
+			border-#{$right}-style:				$val;
+	}
+
+// 7.4.3 Border-Left-Style
+// ------------------------------------------
+// $val: 	border-style from left, 
+// ------------------------------------------
+	@mixin	border-left-style($val){
+			border-#{$left}-style:				$val;
+	}
+
+
+// 7.5	 Borders-Radius
+// -----------------------
+// 7.5.1 Border-Radius
+// ------------------------------------------
+// $val: 	border-radius 
+// ------------------------------------------
+	@mixin border-radius($val) {
+		-webkit-border-radius:					$val;
+		-moz-border-radius:						$val;
+		-khtml-border-radius:					$val;
+		border-radius:							$val; 
+	}
+
+// 7.5.1 Border-Radius-right
+// ------------------------------------------
+// $val: 	border-radius from right side
+// ------------------------------------------
+	@mixin border-right-radius($val){
+		 border-bottom-#{$right}-radius:		$val;
+		-webkit-border-bottom-#{$right}-radius: $val;
+		-moz-border-bottom-#{$right}-radius:	$val;
+		-khtml-border-bottom-#{$right}-radius: 	$val;
+
+		 border-top-#{$right}-radius:			$val;
+		-webkit-border-top-#{$right}-radius:	$val;
+		-moz-border-top-#{$right}-radius:		$val;
+		-khtml-border-top-#{$right}-radius:		$val;
+	}
+
+
+// 7.5.2 Border-Radius-Left
+// ------------------------------------------
+// $val: 	border-radius from left side
+// ------------------------------------------
+	@mixin border-left-radius($val){
+		 border-bottom-#{$left}-radius:			$val;
+		-webkit-border-bottom-#{$left}-radius:	$val;
+		-moz-border-bottom-#{$left}-radius:		$val;
+		-khtml-border-bottom-#{$left}-radius:	$val;
+
+		 border-top-#{$left}-radius:			$val;
+		-webkit-border-top-#{$left}-radius:		$val;
+		-moz-border-top-#{$left}-radius:		$val;
+		-khtml-border-top-#{$left}-radius:		$val;
+	}
+
+// 7.5.3 Border-Radius-Top
+// ------------------------------------------
+// $val: 	border-radius from top side
+// ------------------------------------------
+	@mixin border-top-radius($val){
+		 border-top-#{$right}-radius:			$val;
+		-webkit-border-top-#{$right}-radius:	$val;
+		-moz-border-top-#{$right}-radius:		$val;
+		-khtml-border-top-#{$right}-radius:		$val;
+
+		 border-top-#{$left}-radius:			$val;
+		-webkit-border-top-#{$left}-radius:		$val;
+		-moz-border-top-#{$left}-radius:		$val;
+		-khtml-border-top-#{$left}-radius:		$val;
+	}
+
+// 7.5.4 Border-Radius-Bottom
+// ------------------------------------------
+// $val: 	border-radius from bottom side
+// ------------------------------------------
+	@mixin border-bottom-radius($val){
+		 border-bottom-#{$right}-radius:		$val;
+		-webkit-border-bottom-#{$right}-radius: $val;
+		-moz-border-bottom-#{$right}-radius:	$val;
+		-khtml-border-bottom-#{$right}-radius: 	$val;
+
+		 border-bottom-#{$left}-radius:			$val;
+		-webkit-border-bottom-#{$left}-radius:	$val;
+		-moz-border-bottom-#{$left}-radius:		$val;
+		-khtml-border-bottom-#{$left}-radius:	$val;	
+	}
+
+// 7.5.5 Border-Top-Right-Radius
+// ------------------------------------------
+// $val: 	border-radius from top right side
+// ------------------------------------------
+	@mixin border-top-right-radius($val) {
+		 border-top-right-radius:				$val; 
+		-moz-border-radius-topright:			$val;
+		-webkit-border-top-right-radius:		$val; 
+		-khtml-border-top-right-radius:			$val; 
+	}
+
+// 7.5.6 Border-Top-Left-Radius
+// ------------------------------------------
+// $val: 	border-radius from top left side
+// ------------------------------------------
+	@mixin border-top-left-radius($val) {
+		 border-top-left-radius:				$val; 
+		-moz-border-radius-topleft:				$val;
+		-webkit-border-top-left-radius:			$val; 
+		-khtml-border-top-left-radius:			$val; 
+	}
+
+// 7.5.6 Border-Bottom-right-Radius
+// ------------------------------------------
+// $val: 	border-radius from top left side
+// ------------------------------------------
+	@mixin border-bottom-right-radius($val) {
+		 border-bottom-right-radius:			$val; 
+		-moz-border-radius-bottomright:			$val;
+		-webkit-border-bottom-right-radius:		$val; 
+		-khtml-border-bottom-right-radius:		$val; 
+	}
+
+// 7.5.6 Border-Top-Left-Radius
+// ------------------------------------------
+// $val: 	border-radius from top left side
+// ------------------------------------------
+	@mixin border-bottom-left-radius($val) {
+		 border-bottom-left-radius:				$val; 
+		-moz-border-radius-bottomleft:			$val;
+		-webkit-border-bottom-left-radius:		$val; 
+		-khtml-border-bottom-left-radius:		$val; 
+	}
+
+// ----------------------------------------------
+// 8-	Clear Directions:
+// 8.1- Clear:
+// ----------------------------------------------
+// $dir: 	clear direction,
+// ----------------------------------------------
+	@mixin clear($dir){
+		@if($dir==right){
+			clear:$right;		
+		}
+		@else {
+			clear:$left;		
+		}
+	}
+	
